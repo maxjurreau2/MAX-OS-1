@@ -9,6 +9,8 @@ import { CausalityConsole } from "../causality/CausalityConsole";
 import { EventShapeConsole } from "../eventshape/EventShapeConsole";
 import { WorldlineConsole } from "../worldline/WorldlineConsole";
 import { RealityFabricConsole } from "../reality/RealityFabricConsole";
+import { UmbrellaAPI } from "../umbrella/api/umbrella_api";
+import { UmbrellaRuntime } from "../umbrella/runtime/umbrella_runtime";
 
 export class MaxOsUnifiedOrchestrator {
   private sim = new SimulationConsole();
@@ -22,6 +24,8 @@ export class MaxOsUnifiedOrchestrator {
   private eventShape = new EventShapeConsole();
   private worldline = new WorldlineConsole();
   private realityFabric = new RealityFabricConsole();
+  private umbrellaRuntime = new UmbrellaRuntime();
+  readonly umbrella = new UmbrellaAPI(this.umbrellaRuntime);
 
   startAll() {
     console.log("=== MAX‑OS‑1 Unified Orchestration Start ===");
@@ -29,6 +33,7 @@ export class MaxOsUnifiedOrchestrator {
     this.sim.start();
     this.physics.initDemoPlanet();
     this.spatial.init();
+    this.umbrellaRuntime.initialize();
 
     setInterval(() => {
       this.physics.step();
@@ -39,6 +44,7 @@ export class MaxOsUnifiedOrchestrator {
       this.eventShape.step();
       this.worldline.step();
       this.realityFabric.step();
+      this.umbrellaRuntime.step();
     }, 1000);
 
     setInterval(() => {
@@ -62,5 +68,6 @@ export class MaxOsUnifiedOrchestrator {
     this.eventShape.printAllShapes();
     this.worldline.printAllPoints();
     this.realityFabric.printAllPatches();
+    this.umbrellaRuntime.printState();
   }
 }
