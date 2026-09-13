@@ -8,6 +8,7 @@ import { ConsciousnessConsole } from "../consciousness/ConsciousnessConsole";
 import { CausalityConsole } from "../causality/CausalityConsole";
 import { EventShapeConsole } from "../eventshape/EventShapeConsole";
 import { WorldlineConsole } from "../worldline/WorldlineConsole";
+import { RealityFabricConsole } from "../reality/RealityFabricConsole";
 
 export class MaxOsUnifiedOrchestrator {
   private sim = new SimulationConsole();
@@ -20,6 +21,7 @@ export class MaxOsUnifiedOrchestrator {
   private causality = new CausalityConsole();
   private eventShape = new EventShapeConsole();
   private worldline = new WorldlineConsole();
+  private realityFabric = new RealityFabricConsole();
 
   startAll() {
     console.log("=== MAX‑OS‑1 Unified Orchestration Start ===");
@@ -36,6 +38,7 @@ export class MaxOsUnifiedOrchestrator {
       this.causality.step();
       this.eventShape.step();
       this.worldline.step();
+      this.realityFabric.step();
     }, 1000);
 
     setInterval(() => {
@@ -58,5 +61,6 @@ export class MaxOsUnifiedOrchestrator {
     this.causality.printAllLinks();
     this.eventShape.printAllShapes();
     this.worldline.printAllPoints();
+    this.realityFabric.printAllPatches();
   }
 }
