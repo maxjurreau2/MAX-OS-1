@@ -4,6 +4,10 @@ import { ExperienceConsole } from "../experience/ExperienceConsole";
 import { QuantumConsole } from "../quantum/QuantumConsole";
 import { SpatialManifoldConsole } from "../spatial/SpatialManifoldConsole";
 import { TemporalPropagationConsole } from "../temporal/TemporalPropagationConsole";
+import { ConsciousnessConsole } from "../consciousness/ConsciousnessConsole";
+import { CausalityConsole } from "../causality/CausalityConsole";
+import { EventShapeConsole } from "../eventshape/EventShapeConsole";
+import { WorldlineConsole } from "../worldline/WorldlineConsole";
 
 export class MaxOsUnifiedOrchestrator {
   private sim = new SimulationConsole();
@@ -12,6 +16,10 @@ export class MaxOsUnifiedOrchestrator {
   private quantum = new QuantumConsole();
   private spatial = new SpatialManifoldConsole();
   private temporal = new TemporalPropagationConsole();
+  private consciousness = new ConsciousnessConsole();
+  private causality = new CausalityConsole();
+  private eventShape = new EventShapeConsole();
+  private worldline = new WorldlineConsole();
 
   startAll() {
     console.log("=== MAX‑OS‑1 Unified Orchestration Start ===");
@@ -24,6 +32,10 @@ export class MaxOsUnifiedOrchestrator {
       this.physics.step();
       this.spatial.step();
       this.temporal.step();
+      this.consciousness.step();
+      this.causality.step();
+      this.eventShape.step();
+      this.worldline.step();
     }, 1000);
 
     setInterval(() => {
@@ -42,5 +54,9 @@ export class MaxOsUnifiedOrchestrator {
     this.experience.printExperienceStream();
     this.spatial.printAllPoints();
     this.temporal.printAllEvents();
+    this.consciousness.printAllFrames();
+    this.causality.printAllLinks();
+    this.eventShape.printAllShapes();
+    this.worldline.printAllPoints();
   }
 }
