@@ -3,7 +3,7 @@ import { RoleIdentity, RoleIdentityFactory } from './RoleIdentity';
 import { StateIdentity, StateIdentityFactory } from './StateIdentity';
 import { TransitionIdentity, TransitionIdentityFactory } from './TransitionIdentity';
 import { Provenance, ProvenanceRecord } from './Provenance';
-import { Rights, RightsRecord } from './Rights';
+import { RightType, Rights, RightsRecord } from './Rights';
 import { Lineage, LineageRecord } from './Lineage';
 
 export interface IdentityKernelContext {

@@ -18,7 +18,9 @@ export class IdentityEconomicFusionLayer {
       return {
         entity,
         signature: entity.signature,
-        lineage: ctx.lineage.get(entity.lineageId),
+        lineage: Array.from(ctx.lineage.values()).find(
+          lineage => lineage.rootEntityId === entity.id,
+        ),
         provenance: ctx.provenance.get(entity.provenanceId),
         economic: {
           valuations,
